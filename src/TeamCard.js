@@ -23,10 +23,16 @@ class TeamCard extends React.Component {
         <Col md={3} sytle={{'margin': "10px 10px"}}>
           <Card>
           <CardText>
-          {this.props.email}
+          {this.props.name}
           </CardText>
+          <CardImg>
+          if (this.prop.image_url == null){
+            this.prop.image_url = "./defaultimg.png"
+          }
+          <img alt="profile" src={this.prop.image_url} />
+          </CardImg>
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
-          <CardText>{this.props.body}</CardText>
+          <CardText>{this.props.players}</CardText>
           </CardBody>
           <Button color={this.state.flag ? "primary" : "danger"} onClick={this.handleClick}>
           {this.state.flag ? "unflag" : "Flag as inappropriate"}

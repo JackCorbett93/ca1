@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TeamCard from './TeamCard.js';
+import TeamCard from './TeamCard';
 import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
@@ -7,19 +7,19 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      teams: []
     };
   }
 
   componentDidMount() {
-    axios.get("https://api.pandascore.co/csgo/teams.json?page=1",
-     {'headers': {'X-RapidAPI-Key': 'b8uyLf66NWc6YMeNnFqqfZMSAq56eXR_h9aKKfHh13VmeJe80Z4'}})
+    axios.get("https://cors-anywhere.herokuapp.com/https://api.pandascore.co/csgo/teams.json",
+      {'headers': {"Authorization": 'Bearer ' +'b8uyLf66NWc6YMeNnFqqfZMSAq56eXR_h9aKKfHh13VmeJe80Z4'}})
       .then(response => {
-          console.log(response);
-          // this.setState({
-          //   isLoaded: true,
-          //   items: result.items
-          // });
+          console.log(response.data);
+          this.setState({
+            isLoaded: true,
+            teams: response.data
+          });
         })
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -35,16 +35,17 @@ class App extends React.Component {
   }
 
   render(){
-         const commentList = this.state.items.map( c=>
+         const teamList = this.state.teams.map(t => (
           <TeamCard
-           key={c.id}
-         name={c.name} />
-         );
+           key={t.name}
+         name={t.name}
+         image={t.image_url} />
+       ));
 
          return (
          <container>
          <row>
-         {commentList}
+         {teamList}
          </row>
          </container>
              );
