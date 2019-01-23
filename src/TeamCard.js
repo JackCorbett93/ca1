@@ -29,7 +29,7 @@ class TeamCard extends React.Component {
         player = "Not available"
       }
       return (
-        <Col md={3} sytle={{'margin': "10px 10px"}}>
+        <Col md={4} sytle={{'margin': "10px 10px"}}>
           <Card>
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
           <CardTitle>{this.props.name}</CardTitle>

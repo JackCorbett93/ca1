@@ -42,7 +42,7 @@ class App extends Component {
          const teamList = this.state.teams.map( t=> {
 
            if (t.image_url === null || t.image_url === undefined){
-             img = "https://placeholdit.imgix.net/~text?txtsize=33&txt=NoImage&w=318&h=180";
+             img = "https://placeholdit.imgix.net/~text?txtsize=33&txt=No Image&w=500&h=500";
            } else {
              img = t.image_url;
            }
