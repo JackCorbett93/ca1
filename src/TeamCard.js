@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, CardImg, CardText, CardBody,
-       CardTitle, CardSubtitle, Button } from 'react';
+import { Col, Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class TeamCard extends React.Component {
     constructor(props){
@@ -9,28 +8,34 @@ class TeamCard extends React.Component {
         this.state ={
             flag: false
         };
-            this.handleClick = this.handleClick.bind(this);
+
     }
 
-    handleClick(){
-        this.setState(prevState => ({
-            flag: !prevState.flag
-        }));
-    }
+    // handleClick(){
+    //     this.setState(prevState => ({
+    //         flag: !prevState.flag
+    //     }));
+    // }
 
     render() {
+      let player;
+      let players =  [];
+      if (this.props.players.length !== 0) {
+        for (let i = 0; i < this.props.players.length; i++) {
+          player = this.props.players[i].name;
+          players.push(player);
+        }
+      } else {
+        player = "Not available"
+      }
       return (
         <Col md={3} sytle={{'margin': "10px 10px"}}>
           <Card>
-          <CardText>
-          {this.props.email}
-          </CardText>
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
-          <CardText>{this.props.body}</CardText>
+          <CardTitle>{this.props.name}</CardTitle>
+          <CardImg alt="profile" src={this.props.image}/>
+          <CardText>players: {players.toString()}</CardText>
           </CardBody>
-          <Button color={this.state.flag ? "primary" : "danger"} onClick={this.handleClick}>
-          {this.state.flag ? "unflag" : "Flag as inappropriate"}
-          </Button>
           </Card>
         </Col>
       );
