@@ -2,26 +2,28 @@ import React, { Component } from 'react';
 import {Container, Row} from 'reactstrap';
 import TeamCard from './TeamCard';
 import axios from 'axios';
-class App extends Component {
+class Team_Play extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      teams: []
+      Details: []
     };
   }
 
   componentDidMount() {
-    axios.get("https://cors-anywhere.herokuapp.com/https://api.pandascore.co/csgo/teams.json?page=4", {
+    axios.get(`https://cors-anywhere.herokuapp.com/https://api.pandascore.co/csgo/players.json?filter[team_id]=3214`, {
       'headers': {
-        'Authorization': 'Bearer b8uyLf66NWc6YMeNnFqqfZMSAq56eXR_h9aKKfHh13VmeJe80Z4'
-   }})
+        'Authorization': 'Bearer b8uyLf66NWc6YMeNnFqqfZMSAq56eXR_h9aKKfHh13VmeJe80Z4',
+        'X-Per-Page': 100,
+      }
+   })
       .then(response => {
           console.log(response.data);
           this.setState({
-              isLoaded: true,
-              teams: response.data
+          isLoaded: true,
+          Details: response.data
           });
         })
         // Note: it's important to handle errors here
@@ -39,7 +41,7 @@ class App extends Component {
 
   render(){
     let img, player;
-         const teamList = this.state.teams.map( t=> {
+         const teamdetails = this.state.Details.map( t=> {
 
            if (t.image_url === null || t.image_url === undefined){
              img = "https://placeholdit.imgix.net/~text?txtsize=33&txt=No Image&w=500&h=500";
@@ -55,7 +57,6 @@ class App extends Component {
 
           return <TeamCard
            key={t.id}
-           id={t.id}
          name={t.name}
          players={player}
          image={img}/>
@@ -64,10 +65,10 @@ class App extends Component {
          return (
          <Container>
          <Row>
-         {teamList}
+         {teamdetails}
          </Row>
          </Container>
              );
      }
 }
-export default App;
+export default Team_Play;
