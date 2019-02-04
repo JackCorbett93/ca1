@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Container, Row} from 'reactstrap';
-import TeamCard from './TeamCard';
+import TeamCard from './TeamCard2';
 import axios from 'axios';
+
 class Team_Play extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +14,7 @@ class Team_Play extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://cors-anywhere.herokuapp.com/https://api.pandascore.co/csgo/players.json?filter[team_id]=3214`, {
+    axios.get(`https://cors-anywhere.herokuapp.com/https://api.pandascore.co/csgo/players.json?filter[team_id]=${this.props.match.params.id}`, {
       'headers': {
         'Authorization': 'Bearer b8uyLf66NWc6YMeNnFqqfZMSAq56eXR_h9aKKfHh13VmeJe80Z4',
         'X-Per-Page': 100,
@@ -58,6 +59,8 @@ class Team_Play extends Component {
           return <TeamCard
            key={t.id}
          name={t.name}
+         fname={t.last_name}
+         hometown={t.hometown}
          players={player}
          image={img}/>
        });
