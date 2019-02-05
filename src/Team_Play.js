@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Row} from 'reactstrap';
+import {Container, Row, Card} from 'reactstrap';
 import TeamCard from './TeamCard2';
 import axios from 'axios';
 
@@ -68,7 +68,13 @@ class Team_Play extends Component {
          return (
          <Container>
          <Row>
+         <Card>
+         <Container>
+         <Row>
          {teamdetails}
+         </Row>
+         </Container>
+         </Card>
          </Row>
          </Container>
              );

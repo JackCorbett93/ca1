@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Container, Row} from 'reactstrap';
 import TeamCard from './TeamCard';
 import axios from 'axios';
+//import fire from './fire';
 let results = [];
 let results2 = [];
 let fresults = [];
@@ -91,6 +92,9 @@ class App extends Component {
           a.name < b.name ? 1 : -1
         );
       }
+      if (this.state.NoPly === true){
+
+      }
 
       let filteredUsers = sortedUsers;
 
@@ -98,7 +102,7 @@ class App extends Component {
       filteredUsers = this.state.teams.filter(u =>
         u.name.startsWith(this.state.searchTerm)
       );
-      let img, player, uppercase;
+      let img, player;
 
       const teamNames = filteredUsers.map(t => {
         // if (t.name !== null){
@@ -150,6 +154,15 @@ class App extends Component {
         </option>
         <option value="za">Z to A</option>
         </select>
+        <label>
+        Filter no players:
+        </label>
+        <input
+        type="checkbox"
+        name="NoPly"
+        value={this.state.NoPly}
+        onChange={this.handleChange}
+        />
         <Row>
         {teamNames}
         </Row>

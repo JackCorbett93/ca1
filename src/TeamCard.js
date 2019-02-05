@@ -1,8 +1,7 @@
 import React from 'react';
 import { Col, Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 //import Players from "./Team_Play";
-import Routes from './Main';
-import { Link, Route } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 class TeamCard extends React.Component {
     constructor(props){
         super(props);
