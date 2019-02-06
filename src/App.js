@@ -40,11 +40,6 @@ class App extends Component {
               }})
             ])
             .then(axios.spread((firstres, secondres, thirdres, forthres) => {
-              //console.log(firstres.data + secondres.data + thirdres.data)
-              // results.push(firstres.data)
-              // results.push(secondres.data)
-              //results.push(thirdres.data)
-              //results = results.concat(firstres.data).concat(secondres.data).concat(thirdres.data)
               results = firstres.data.concat(secondres.data)
               results2 = thirdres.data.concat(forthres.data)
               fresults = results.concat(results2)
@@ -52,14 +47,9 @@ class App extends Component {
               this.setState({
                 teams: fresults,
                 isLoaded: true,
-                //teams: secondres.data,
-                //teams: thirdres.data,
               });
             }))
 
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
             .catch(error => {
               console.log(error);
               this.setState({
@@ -105,10 +95,6 @@ class App extends Component {
       let img, player;
 
       const teamNames = filteredUsers.map(t => {
-        // if (t.name !== null){
-        //   uppercase = t.name;
-        //   uppercase.ToUpperCase;
-        // }
 
         if (t.image_url === null || t.image_url === undefined){
           img = "https://placeholdit.imgix.net/~text?txtsize=33&txt=No Image&w=500&h=500";
@@ -163,7 +149,7 @@ class App extends Component {
         value={this.state.NoPly}
         onChange={this.handleChange}
         />
-        <Row>
+        <Row noGutters>
         {teamNames}
         </Row>
         </div>

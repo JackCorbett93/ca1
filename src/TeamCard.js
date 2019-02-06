@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-//import Players from "./Team_Play";
 import { Link} from 'react-router-dom'
 class TeamCard extends React.Component {
     constructor(props){
@@ -13,13 +12,6 @@ class TeamCard extends React.Component {
             alphabetical: 'az'
         };
     }
-
-    // handleClick(){
-    //     this.setState(prevState => ({
-    //         flag: !prevState.flag
-    //     }));
-    //<CardText>players: {players.toString()}</CardText>
-    // }
 
     render() {
       let player;
@@ -37,7 +29,7 @@ class TeamCard extends React.Component {
         <Link to={`/Players/${this.props.id}`}>
           <Card>
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
-          <CardTitle>{this.props.name} {this.props.id}</CardTitle>
+          <CardTitle>{this.props.name}</CardTitle>
           <CardText>Number of Players: {players.length}</CardText>
           <CardImg alt="profile" src={this.props.image}/>
           </CardBody>

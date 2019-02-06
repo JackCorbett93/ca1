@@ -70,7 +70,7 @@ class Team_Play extends Component {
          <Row>
          <Card>
          <Container>
-         <Row>
+         <Row noGutters>
          {teamdetails}
          </Row>
          </Container>
