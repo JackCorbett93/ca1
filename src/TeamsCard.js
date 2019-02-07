@@ -26,10 +26,26 @@ class TeamCard extends React.Component {
       } else {
         player = "Not available"
       }
+
+      if (players.length > 0){
       return (
         <Col md={4} sytle={{'margin': "10px 10px"}}>
         {/*sets up link to page players and passes in the id of the team the user clicks on*/}
-        <Link to={`/Players/${this.props.id}`}>
+          <Link to={`/Players/${this.props.id}`}>
+            <Card className="tcard">
+            <CardBody style={this.state.flag ? {display:'none'} : {}}>
+            <CardTitle>{this.props.name}</CardTitle>
+            <CardText>Number of Players: {players.length}</CardText>
+            <CardImg alt="profile" className="mtimg" src={this.props.image}/>
+            </CardBody>
+            </Card>
+            </Link>
+            </Col>
+          )
+        }
+        else {
+          return(
+          <Col md={4} sytle={{'margin': "10px 10px"}}>
           <Card className="tcard">
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
           <CardTitle>{this.props.name}</CardTitle>
@@ -37,9 +53,10 @@ class TeamCard extends React.Component {
           <CardImg alt="profile" className="mtimg" src={this.props.image}/>
           </CardBody>
           </Card>
-          </Link>
-        </Col>
-      );
+          </Col>
+        )
     }
+  }
 }
+
 export default TeamCard;
