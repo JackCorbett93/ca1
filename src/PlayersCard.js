@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import "./index.css";
 class TeamCard extends React.Component {
     constructor(props){
         super(props);
@@ -16,9 +17,9 @@ class TeamCard extends React.Component {
       return (
         <Col md={4} sytle={{'margin': "10px 10px"}}>
           <Card>
-          <CardBody style={this.state.flag ? {display:'none'} : {}}>
+          <CardBody className="pcard" style={this.state.flag ? {display:'none'} : {}}>
           <CardTitle>{this.props.name} {this.props.id}</CardTitle>
-          <CardImg alt="profile" className="mimg" src={this.props.image}/>
+          <CardImg alt="profile" className="pimg" src={this.props.image}/>
           <CardText>Country: {this.props.hometown}</CardText>
           <CardText>Full name: {this.props.fname}</CardText>
           </CardBody>

@@ -82,9 +82,9 @@ class Team_Play extends Component {
          <Container>
          <Row>
          <Card>
-         <CardTitle> {tname}</CardTitle>
+         <CardTitle className="tname"> {tname}</CardTitle>
          <div className="timg">
-         <CardImg alt="profile" src={timg}/>
+         <CardImg alt="profile" className="timg" src={timg}/>
          </div>
          <Container>
          <Row noGutters>
