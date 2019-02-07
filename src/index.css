@@ -1,5 +1,5 @@
 body {
-  background-color: #FFCC00;
+  background-color: #F0F0F0;
   padding: 20px;
   margin: 0;
 }
@@ -23,7 +23,7 @@ ul.header li a {
   display: inline-block;
 }
 .content {
-  background-color: #FFF;
+  background-color: #F0F0F0;
   padding: 20px;
 }
 .content h2 {
@@ -35,4 +35,17 @@ ul.header li a {
 }
 .active {
   background-color: #0099FF;
+}
+.card-img {
+  width: 50%;
+  height: 50%;
+  margin-left: 25%;
+}
+.card-img.timg {
+  width: 100%;
+  height: 100%;
+}
+.card{
+  min-width: 235.75px;
+  min-height: 277.5px;
 }

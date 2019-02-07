@@ -18,7 +18,7 @@ class TeamCard extends React.Component {
           <Card>
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
           <CardTitle>{this.props.name} {this.props.id}</CardTitle>
-          <CardImg alt="profile" src={this.props.image}/>
+          <CardImg alt="profile" className="mimg" src={this.props.image}/>
           <CardText>Country: {this.props.hometown}</CardText>
           <CardText>Full name: {this.props.fname}</CardText>
           </CardBody>

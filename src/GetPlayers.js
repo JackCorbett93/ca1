@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Container, Row, Card} from 'reactstrap';
-import TeamCard from './TeamCard2';
+import {Container, Row, Card, CardImg, CardTitle} from 'reactstrap';
+import TeamCard from './PlayersCard';
 import axios from 'axios';
-
+import "./index.css";
 class Team_Play extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class Team_Play extends Component {
       Details: []
     };
   }
-
+//api requests players with the team id
   componentDidMount() {
     axios.get(`https://cors-anywhere.herokuapp.com/https://api.pandascore.co/csgo/players.json?filter[team_id]=${this.props.match.params.id}`, {
       'headers': {
@@ -23,6 +23,7 @@ class Team_Play extends Component {
       .then(response => {
           console.log(response.data);
           this.setState({
+            //sets reponse data to Details
           isLoaded: true,
           Details: response.data
           });
@@ -41,9 +42,21 @@ class Team_Play extends Component {
   }
 
   render(){
-    let img, player;
+    //sets variable so that if nothing came through on api request it just sets defualt
+    let img, player,timg,tname;
+    //maps incoming data to variables
          const teamdetails = this.state.Details.map( t=> {
-
+           //sees if there is data that comes through players eg if it has zero players then it will show this
+           if (this.state.Details === null || this.state.Details === undefined || this.state.Details.length <= 0){
+             tname = "Data not provided by api";
+           } else {
+             tname= t.current_team.name
+           }
+           if (t.current_team.image_url === null || t.current_team.image_url === undefined){
+             timg = "https://placeholdit.imgix.net/~text?txtsize=33&txt=No Image&w=500&h=500";
+           } else {
+             timg = t.current_team.image_url;
+           }
            if (t.image_url === null || t.image_url === undefined){
              img = "https://placeholdit.imgix.net/~text?txtsize=33&txt=No Image&w=500&h=500";
            } else {
@@ -55,20 +68,24 @@ class Team_Play extends Component {
            } else {
              player = "Not Available"
            }
-
+            //sets variables and returns it to card
           return <TeamCard
            key={t.id}
-         name={t.name}
-         fname={t.last_name}
-         hometown={t.hometown}
-         players={player}
-         image={img}/>
+           name={t.name}
+           fname={t.last_name}
+           hometown={t.hometown}
+           players={player}
+           image={img}/>
        });
 
          return (
          <Container>
          <Row>
          <Card>
+         <CardTitle> {tname}</CardTitle>
+         <div className="timg">
+         <CardImg alt="profile" src={timg}/>
+         </div>
          <Container>
          <Row noGutters>
          {teamdetails}

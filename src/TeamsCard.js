@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 import { Link} from 'react-router-dom'
+import "./index.css";
 class TeamCard extends React.Component {
     constructor(props){
         super(props);
@@ -14,6 +15,7 @@ class TeamCard extends React.Component {
     }
 
     render() {
+      // checks to see if any player data is on team object and then pushes it into array so it can show number of players or their name
       let player;
       let players =  [];
       if (this.props.players.length !== 0) {
@@ -26,8 +28,9 @@ class TeamCard extends React.Component {
       }
       return (
         <Col md={4} sytle={{'margin': "10px 10px"}}>
+        {/*sets up link to page players and passes in the id of the team the user clicks on*/}
         <Link to={`/Players/${this.props.id}`}>
-          <Card>
+          <Card className="cards">
           <CardBody style={this.state.flag ? {display:'none'} : {}}>
           <CardTitle>{this.props.name}</CardTitle>
           <CardText>Number of Players: {players.length}</CardText>

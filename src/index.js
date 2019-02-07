@@ -2,7 +2,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Main from "./Main";
+import Main from "./Router";
 import "./index.css";
 
 ReactDOM.render(<Main/>, document.getElementById('root'));
